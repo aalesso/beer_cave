@@ -1,0 +1,126 @@
+<!-- Validation failure messages -->
+<% if @beer.errors.any? %>
+  <% @beer.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Beer</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_beer" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for category -->
+      <div class="form-group">
+        <label for="category" class="control-label">
+          Category
+        </label>
+
+        <input type="text" id="category" name="category" placeholder="Category" class="form-control" value="<%= @beer.category %>">
+      </div>
+
+      <!-- Label and input for name.string -->
+      <div class="form-group">
+        <label for="name.string" class="control-label">
+          Name.string
+        </label>
+
+        <input type="text" id="name.string" name="name.string" placeholder="Name.string" class="form-control" value="<%= @beer.name.string %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @beer.user_id %>">
+      </div>
+
+      <!-- Label and input for fellow_imbibers -->
+      <div class="form-group">
+        <label for="fellow_imbibers" class="control-label">
+          Fellow imbibers
+        </label>
+
+        <textarea id="fellow_imbibers" name="fellow_imbibers" placeholder="Fellow imbibers" class="form-control" rows="3"><%= @beer.fellow_imbibers %></textarea>
+      </div>
+
+      <!-- Label and input for favorite -->
+      <div class="checkbox">
+        <label for="favorite">
+          <input type="checkbox" id="favorite" name="favorite" value="1" <%= "checked" if @beer.favorite %>>
+          Favorite
+        </label>
+      </div>
+
+      <!-- Label and input for year -->
+      <div class="form-group">
+        <label for="year" class="control-label">
+          Year
+        </label>
+
+        <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @beer.year %>">
+      </div>
+
+      <!-- Label and input for rating -->
+      <div class="form-group">
+        <label for="rating" class="control-label">
+          Rating
+        </label>
+
+        <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="<%= @beer.rating %>">
+      </div>
+
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"><%= @beer.notes %></textarea>
+      </div>
+
+      <!-- Label and input for grape -->
+      <div class="form-group">
+        <label for="grape" class="control-label">
+          Grape
+        </label>
+
+        <textarea id="grape" name="grape" placeholder="Grape" class="form-control" rows="3"><%= @beer.grape %></textarea>
+      </div>
+
+      <!-- Label and input for country -->
+      <div class="form-group">
+        <label for="country" class="control-label">
+          Country
+        </label>
+
+        <textarea id="country" name="country" placeholder="Country" class="form-control" rows="3"><%= @beer.country %></textarea>
+      </div>
+
+      <!-- Label and input for photo -->
+      <div class="form-group">
+        <label for="photo" class="control-label">
+          Photo
+        </label>
+
+        <input type="text" id="photo" name="photo" placeholder="Photo" class="form-control" value="<%= @beer.photo %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Beer
+      </button>
+      or
+      <a href="/beers">Cancel</a>
+    </form>
+  </div>
+</div>

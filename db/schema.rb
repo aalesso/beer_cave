@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125203701) do
+ActiveRecord::Schema.define(version: 20170612010245) do
+
+  create_table "beers", force: :cascade do |t|
+    t.string   "category"
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "fellow_imbibers"
+    t.boolean  "favorite"
+    t.integer  "year"
+    t.integer  "rating"
+    t.text     "notes"
+    t.text     "grape"
+    t.text     "country"
+    t.string   "photo"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -1,5 +1,5 @@
 <p>
-          <% favorite = Favorite.find_by(:wine_id => wine.id, :user_id => current_user.id) %>
+          <% favorite = Favorite.find_by(:beer_id => beer.id, :user_id => current_user.id) %>
           <% if favorite.present? %>
             <a href="/delete_like/<%= like.id %>" class="btn btn-link">
               <i class="fa fa-heart"></i>
@@ -37,8 +37,8 @@
 
 <div class="page-header">
   <h1>
-    Welcome to Your Wine Cellar!
-    <a href="/wines/new" class="btn btn-sm btn-primary">Add a Bottle</a>
+    Welcome to the beer Cave!
+    <a href="/beers/new" class="btn btn-sm btn-primary">Add a Bottle</a>
   </h1>
 </div>
 
@@ -46,8 +46,8 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-1">
-          
-          
+
+
         </div>
         <div class="col-xs-1"></div>
         <div class="col-xs-1"></div>
@@ -73,18 +73,18 @@
         <th>Actions</th>
       </tr>
 
-      <% @wines.each do |wine| %>
+      <% @beers.each do |beer| %>
       <tr>
-        <td><img src="<%= wine.photo %>" width="200" class="img-responsive"></td>
-        <td><%= wine.favorite %></td>
-        <td><%= wine.category %></td>
-        <td><%= wine.name %></td>
-        <td><%= wine.grape %></td>
-        <td><%= wine.country %></td>
+        <td><img src="<%= beer.photo %>" width="200" class="img-responsive"></td>
+        <td><%= beer.favorite %></td>
+        <td><%= beer.category %></td>
+        <td><%= beer.name %></td>
+        <td><%= beer.grape %></td>
+        <td><%= beer.country %></td>
         <td>
-      <a href="/wines/<%= wine.id %>" class="btn btn-xs btn-default">Show</a>
-          <a href="/wines/<%= wine.id %>/edit" class="btn btn-xs btn-default">Edit</a>
-          <a href="/delete_wine/<%= wine.id %>" class="btn btn-xs btn-default" rel="nofollow">Delete</a>
+      <a href="/beers/<%= beer.id %>" class="btn btn-xs btn-default">Show</a>
+          <a href="/beers/<%= beer.id %>/edit" class="btn btn-xs btn-default">Edit</a>
+          <a href="/delete_beer/<%= beer.id %>" class="btn btn-xs btn-default" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>

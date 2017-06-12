@@ -1,0 +1,3 @@
+class Paleale < ActiveRecord::Base
+	belongs_to :user
+end

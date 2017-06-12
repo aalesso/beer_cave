@@ -1,29 +1,46 @@
 Rails.application.routes.draw do
 
+  # Routes for the Beer resource:
+  # CREATE
+  get "/beers/new", :controller => "beers", :action => "new"
+  post "/create_beer", :controller => "beers", :action => "create"
+
+  # READ
+  get "/beers", :controller => "beers", :action => "index"
+  get "/beers/:id", :controller => "beers", :action => "show"
+
+  # UPDATE
+  get "/beers/:id/edit", :controller => "beers", :action => "edit"
+  post "/update_beer/:id", :controller => "beers", :action => "update"
+
+  # DELETE
+  get "/delete_beer/:id", :controller => "beers", :action => "destroy"
+  #------------------------------
+
   devise_for :users
-  root 'wines#index'
+  root 'beers#index'
 
   # Routes for the Wine resource:
   # CREATE
-  get "/wines/new", :controller => "wines", :action => "new"
-  post "/create_wine", :controller => "wines", :action => "create"
+  get "/beers/new", :controller => "beers", :action => "new"
+  post "/create_beer", :controller => "beers", :action => "create"
 
   # READ
-  get "/wines", :controller => "wines", :action => "index"
-  get "/wines/:id", :controller => "wines", :action => "show"
-  get "/wine_filters/:my_category", :controller => "wines", :action => "wine_filters"
+  get "/beers", :controller => "beers", :action => "index"
+  get "/beers/:id", :controller => "beers", :action => "show"
+  get "/beer_filters/:my_category", :controller => "beers", :action => "beer_filters"
 
   # UPDATE
-  get "/wines/:id/edit", :controller => "wines", :action => "edit"
-  post "/update_wine/:id", :controller => "wines", :action => "update"
+  get "/beers/:id/edit", :controller => "beers", :action => "edit"
+  post "/update_beer/:id", :controller => "beers", :action => "update"
 
   # DELETE
-  get "/delete_wine/:id", :controller => "wines", :action => "destroy"
+  get "/delete_beer/:id", :controller => "beers", :action => "destroy"
   #------------------------------
 
- 
 
-  
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
