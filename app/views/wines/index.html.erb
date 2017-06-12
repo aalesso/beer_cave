@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Here is where you record your favourite beers..
+    <a href="/wines/new" class="btn btn-sm btn-primary">Add Beer</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Image</th>
+        <th>   <i class="fa fa-heart-o"></i></th>
+        <th>Category</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Country</th>
+        <th></th>
+      </tr>
+
+      <% @wines.each do |wine| %>
+      <tr>
+        <td><img src="<%= wine.photo %>" width="200" class="img-responsive"></td>
+        <td><%= wine.favorite %></td>
+        <td><%= wine.category %></td>
+        <td><%= wine.name %></td>
+        <td><%= wine.grape %></td>
+        <td><%= wine.country %></td>
+        <td>
+      <a href="/wines/<%= wine.id %>" class="btn btn-xs btn-default">Show</a>
+          <a href="/wines/<%= wine.id %>/edit" class="btn btn-xs btn-default">Edit</a>
+          <a href="/delete_wine/<%= wine.id %>" class="btn btn-xs btn-default" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

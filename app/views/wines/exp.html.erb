@@ -1,0 +1,93 @@
+<p>
+          <% favorite = Favorite.find_by(:wine_id => wine.id, :user_id => current_user.id) %>
+          <% if favorite.present? %>
+            <a href="/delete_like/<%= like.id %>" class="btn btn-link">
+              <i class="fa fa-heart"></i>
+            </a>
+            <% if photo.fans.any? %>
+            <%= photo.fans.pluck(:username).to_sentence %>
+            <%= photo.fans.many? ? "like" : "likes" %>
+            this
+            <% end %>
+          <% else %>
+            <form action="/create_like" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <input type="hidden" name="photo_id" value="<%= photo.id %>">
+
+              <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+              <button class="btn btn-link">
+                <i class="fa fa-heart-o"></i>
+              </button>
+
+              <% if photo.fans.any? %>
+              <%= photo.fans.pluck(:username).to_sentence %>
+              <%= photo.fans.many? ? "like" : "likes" %>
+              this
+              <% else %>
+              <small class="text-muted">be the first to like this</small>
+              <% end %>
+            </form>
+          <% end %>
+        </p>
+
+
+
+<div class="page-header">
+  <h1>
+    Welcome to Your Wine Cellar!
+    <a href="/wines/new" class="btn btn-sm btn-primary">Add a Bottle</a>
+  </h1>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-1">
+          
+          
+        </div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+    </div>
+
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Photo</th>
+        <th>Favorite</th>
+        <th>Category</th>
+        <th>Name</th>
+        <th>Grape</th>
+        <th>Country</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @wines.each do |wine| %>
+      <tr>
+        <td><img src="<%= wine.photo %>" width="200" class="img-responsive"></td>
+        <td><%= wine.favorite %></td>
+        <td><%= wine.category %></td>
+        <td><%= wine.name %></td>
+        <td><%= wine.grape %></td>
+        <td><%= wine.country %></td>
+        <td>
+      <a href="/wines/<%= wine.id %>" class="btn btn-xs btn-default">Show</a>
+          <a href="/wines/<%= wine.id %>/edit" class="btn btn-xs btn-default">Edit</a>
+          <a href="/delete_wine/<%= wine.id %>" class="btn btn-xs btn-default" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
